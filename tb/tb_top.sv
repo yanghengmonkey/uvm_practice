@@ -20,6 +20,8 @@ dut dut_inst(
     .txd   ( output_if.data  ),
     .tx_en ( output_if.valid )
 );
+// fsdb dump
+DUMPCTRL dumpctrl( .CLK(clk) );
 
 // Driver
 initial begin

@@ -4,3 +4,9 @@ sim.daidir
 csrc
 sim
 *log
+verdiLog
+novas*
+vc_hdrs.h
+out
+.*
+*fsdb

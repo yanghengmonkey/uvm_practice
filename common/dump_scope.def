@@ -1,0 +1,8 @@
+#  syntax of a <dump_file> passed to $fsdbDumpvarsToFile()
+#  ["+all" | "+mda"] depth  scope_hierarchy_name  signal_hierarchy_name
+#  For example,
+#  "+all" 1 system    <-- Dump all SV/MDA/normal signals under system
+#  "+mda" 1 system.i_pram <-- Dump MDA/normal signals under system.i_pram
+#     0 system.i_cpu  <-- Only dump normal signals under system.i_cpu
+#
++all 0 dut_inst
