@@ -12,6 +12,10 @@ $STEM/uvc/sequence/my_transaction.sv
 $STEM/uvc/sequence/my_sequence.sv
 $STEM/uvc/my_sequencer.sv
 $STEM/uvc/my_driver.sv
+$STEM/uvc/my_monitor.sv
 $STEM/uvc/my_agent.sv
+$STEM/uvc/my_rm.sv
+$STEM/uvc/my_env.sv
+$STEM/test/my_test.sv
 $STEM/tb/my_if.sv
 $STEM/tb/tb_top.sv

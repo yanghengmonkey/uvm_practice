@@ -10,8 +10,8 @@ class my_transaction extends uvm_sequence_item;
     rand bit[31:0] crc;
 
     constraint pload_cons{
-        pload.size >= 46;
-        pload.size <= 1500;
+        pload.size >= 4;
+        pload.size <= 5;
     }
 
     function bit[31:0] calc_crc();

@@ -2,8 +2,10 @@
 `define MY_AGENT__SV
 
 class my_agent extends uvm_agent;
-    my_driver    drv_inst;
+    uvm_analysis_port #( my_transaction ) ap;
     my_sequencer sqr_inst;
+    my_driver    drv_inst;
+    my_monitor   mon_inst;
 
     function new(string name = "my_agent", uvm_component parent = null);
         super.new(name, parent);
@@ -26,19 +28,21 @@ function void my_agent::build_phase( uvm_phase phase);
     super.build_phase(phase);
     // Create sub component
     `uvm_info(get_full_name(), "Enter build phase", UVM_HIGH);
-    sqr_inst = my_sequencer::type_id::create( "sqr_inst", this);
-    drv_inst = my_driver::type_id::create( "drv_inst", this );
-    uvm_config_db #(uvm_object_wrapper) ::set(this, 
-                                              "sqr_inst.main_phase",
-                                              "default_sequence",
-                                              my_sequence::type_id::get()
-                                              );
+    if( is_active == UVM_ACTIVE) begin
+       sqr_inst = my_sequencer::type_id::create( "sqr_inst", this);
+       drv_inst = my_driver::type_id::create( "drv_inst", this );
+    end
+    mon_inst = my_monitor::type_id::create( "mon_inst", this );
+    ap = new("ap", this);
 endfunction: build_phase
 
 function void my_agent::connect_phase( uvm_phase phase);
     super.connect_phase(phase);
     `uvm_info(get_full_name(), "Enter connect phase", UVM_HIGH);
-    drv_inst.seq_item_port.connect(sqr_inst.seq_item_export);
+    if( is_active == UVM_ACTIVE) begin
+        drv_inst.seq_item_port.connect(sqr_inst.seq_item_export);
+    end
+    mon_inst.ap.connect(ap);
 endfunction: connect_phase
 
 function void my_agent::end_of_elaboration_phase( uvm_phase phase);

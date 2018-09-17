@@ -25,8 +25,10 @@ DUMPCTRL dumpctrl( .CLK(clk) );
 
 // Driver
 initial begin
-    uvm_config_db#(virtual my_if)::set(null, "uvm_test_top*", "vif", input_if);
-    run_test("my_agent");
+    uvm_config_db#(virtual my_if)::set(null, "*agt_msr.drv_inst*", "vif", input_if);
+    uvm_config_db#(virtual my_if)::set(null, "*agt_msr.mon_inst*", "vif", input_if);
+    uvm_config_db#(virtual my_if)::set(null, "*agt_slv.mon_inst*", "vif", output_if);
+    run_test();
 end
 // Clock
 initial begin
