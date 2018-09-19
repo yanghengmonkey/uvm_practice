@@ -14,4 +14,4 @@ clean:
 	${RM} -rf sim.daidir
 	${RM} -rf csrc
 	${RM} ucli.key
-	${RM} ${OUTPUT}
+	${RM} -rf ${OUTPUT_DIR}

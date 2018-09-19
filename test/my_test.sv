@@ -23,13 +23,20 @@ class my_test extends uvm_test;
     endfunction
 
     task main_phase(uvm_phase phase);
-        my_sequence seq = new();
+        uvm_status_e   status;
+        uvm_reg_data_t data;
+        uvm_reg_addr_t addrs[];
+
+        my_vseq seq = new();
         super.main_phase(phase);
         phase.raise_objection(this);
         phase.phase_done.set_drain_time(this, 100);
 
         seq.set_starting_phase(phase);
-        seq.start(env_inst.agt_msr.sqr_inst);
+        seq.start(env_inst.vsqr);
+
+        env_inst.p_rm.invert.write(status, 1, UVM_FRONTDOOR);
+        env_inst.p_rm.invert.read(status, data, UVM_FRONTDOOR);
 
         phase.drop_objection(this);
     endtask: main_phase

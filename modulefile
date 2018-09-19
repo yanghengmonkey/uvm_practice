@@ -1,6 +1,7 @@
 #%Module1.0
 module load vcs/2017.12-1
 module load verdi/2017.12-1
+module load uvm
 
 prepend-path LM_LICENSE_FILE 27020@192.168.100.22
 prepend-path LM_LICENSE_FILE 27050@192.168.128.171

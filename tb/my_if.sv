@@ -1,9 +1,8 @@
 interface my_if(
-    input clk,
-    input rst_n
+    input       clk,
+    input       rst_n,
+    input [7:0] data,
+    input       valid
 );
-
-    logic [7:0] data;
-    logic       valid;
 
 endinterface: my_if

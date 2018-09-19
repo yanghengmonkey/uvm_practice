@@ -49,19 +49,6 @@ task my_driver::main_phase(uvm_phase phase);
         seq_item_port.item_done();
     end
     `uvm_info(get_name(),"Exit main_phase",UVM_HIGH)
-/*
-    my_transaction tr; 
-    phase.raise_objection(this);
-    `uvm_info(get_full_name(),"Enter main_phase",UVM_HIGH)
-    repeat(4) begin
-        `uvm_info(get_name, "Prepare transaction",UVM_HIGH)
-        tr = new();
-        tr.randomize();
-        drive_one_pkt(tr);
-    end
-    `uvm_info(get_full_name(),"Exit main_phase",UVM_HIGH)
-    phase.drop_objection(this);
-*/
 endtask: main_phase
 
 function void my_driver::check_phase(uvm_phase phase);
